@@ -9,7 +9,7 @@ from sklearn.impute import SimpleImputer
 
 # MlFlow
 import mlflow
-from mlflow_utils import create_or_find_experiment
+from mlflow_utils import create_or_find_experiment, best_run
 from model_utils import load_data, clean_df, split_data, set_metrics
 from mlflow.models.signature import infer_signature
 
@@ -30,6 +30,7 @@ from typing import Optional
 # General importing
 import warnings
 import pandas as pd
+from configs import experiment_naming, max_evaluations, comparision_metric
 
 
 def get_sklearn_pipeline(
@@ -120,7 +121,7 @@ def objective_function(
         mlflow.log_metrics(metrics)
         mlflow.sklearn.log_model(pipeline, f"{run.info.run_id}-model")
 
-    return -metrics["Accuracy"]
+    return -metrics[comparision_metric]
 
 
 if __name__ == "__main__":
@@ -148,8 +149,7 @@ if __name__ == "__main__":
     hyper_parameters = parameters    
 
     # Starts experiment
-    experiment_name = "Bank_churn_classifier"
-    experiment_id = create_or_find_experiment(experiment_name=experiment_name)
+    experiment_id = create_or_find_experiment(experiment_name = experiment_naming)
     
     # Starts runs for each model
     for key,value in hyper_parameters.items():
@@ -157,6 +157,7 @@ if __name__ == "__main__":
         run_name = key
         chosen_model = value["algo"]
         space = value["space"]
+
         # Starts parent run
         with mlflow.start_run(run_name= run_name) as run:
 
@@ -174,7 +175,7 @@ if __name__ == "__main__":
                 ),
                 space=space,
                 algo=tpe.suggest,
-                max_evals=3,
+                max_evals=max_evaluations,
                 trials=Trials(),
             )
 
@@ -204,3 +205,6 @@ if __name__ == "__main__":
             mlflow.log_metrics(metrics)
 
             mlflow.sklearn.log_model(sk_model=pipeline, signature=signature, artifact_path="sklearn-model", registered_model_name= f"best-model-{run_name}")
+        
+    # Finding and registering the best model of all classifiers   
+    best_run(experiment_name = experiment_naming, metric = comparision_metric)

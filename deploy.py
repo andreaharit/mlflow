@@ -2,6 +2,7 @@ import mlflow
 import pandas as pd
 import os
 
+# mlflow models serve -m models:/Best_model/ --port 8000
 # mlflow models serve -m models:/Best_model/
 
 experiment_name = "Bank_churn_classifier"
@@ -20,6 +21,6 @@ result = mlflow.register_model(
 )
 
 
-bashCommand = f"mlflow models serve -m runs:/{best_run_id}-model --port 5000"
+bashCommand = f"mlflow models serve -m runs:/{best_run_id}-model --port 8000"
 
 os.system(bashCommand)
