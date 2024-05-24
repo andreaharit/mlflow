@@ -12,30 +12,30 @@ We decided to track every trial of parameters as a child run of the main classif
 
 This way we can see how each parameter affects the metrics for a particular classifier and can compare them inside the MLFlow UI.
 
-INSERT IMAGE EXAMPLE
+![Child runs at MLFlow UI](/imgs/child_runs.png)
 
-Because this is an exercise on MLFlow and not modeling, we kept some configurations to a minimum so the runs don't take too long.
+Because this is an exercise on MLFlow and not ML modeling, we kept some configurations to a minimum so the runs don't take too long.
 
 Therefore the code is now running only two classifier models (AdaBoostClassifier and GradientBoosting).
 
-And making only 3 hyperparameter tunnning evaluations for each model.
+And making only 3 hyperparameter evaluations for each model.
 
 There are another four classifier models available (DecisionTree, KNeigbors, RandomForest and LogisticRegression).
 
-It's possible to run them all by adjusting their parameters and uncommeting them at `\runs_model\src\parameters.py`.
+It's possible to run them all by uncommeting them at `\runs_model\src\parameters.py`.
 
-Also you can adjust the amout the number of hyperparameter evaluations at `max_evals` on `main.py`.
+Also you can adjust the amount hyperparameter evaluations at `config.py` at `max_evaluations`.
 
-The best models of each classifier are logged in in MLFlow model registry.
+The best models of each classifier are logged in in MLFlow model registry. The metric used can be adjusted at ` config.py` at `comparision_metric`.
 
-As well as the best model of them all.
+Finally, we also log in the model registry the best model of them all.
 
-INSERT IMAGE EXAMPLE
+![Best models](/imgs/best_models.png)
 
 Finally, we wanted the user to have local access to the runs and best models, so it isn't all lost when the containers are destroyed.
 Those files will be found at the `mlflow_server` folder.
 
-INSERT IMAGE EXAMPLE
+![Local files](/imgs/local_files.png)
 
 ## Table of Contents
 - [Data Context](Data-Context-➗)
@@ -92,7 +92,7 @@ If you wish to wipe out all generated files, please use:
 
 # File structure 🗃️
 # Timeline 📅
-The learning process and coding for this project took 7 days.
+The learning process and coding for this project took 6 days.
 
 # Thanks 🫡
 Thanks to Viktor the provider for the code for the models, check out his [github](https://github.com/CoViktor)!
