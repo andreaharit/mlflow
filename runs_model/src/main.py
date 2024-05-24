@@ -126,9 +126,10 @@ def objective_function(
 if __name__ == "__main__":
 
     warnings.filterwarnings('ignore', category= UserWarning)
+    mlflow.set_tracking_uri("http://mlflow:5000")
 
     # Loading data
-    df = load_data('./data/BankChurners.csv')
+    df = load_data('../data/BankChurners.csv')
     # Cleaning data
     df = clean_df(df)
     # Splitting Data
@@ -173,7 +174,7 @@ if __name__ == "__main__":
                 ),
                 space=space,
                 algo=tpe.suggest,
-                max_evals=5,
+                max_evals=3,
                 trials=Trials(),
             )
 
