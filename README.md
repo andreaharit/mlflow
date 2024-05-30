@@ -38,24 +38,27 @@ Those files will be found at the `mlflow_server` folder.
 ![Local files](/imgs/local_files.png)
 
 ## Table of Contents
-- [Data Context](Data-Context-➗)
-- [Installation](#Installation-💻)
-- [Usage](#Usage-🛠)
-- [File structure](#File-structure-🗃️)
-- [Timeline](#Timeline-📅)
-- [Thanks](#Thanks-🫡)
+- [Data Context](#Data)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [File structure](#FileStructure)
+- [Timeline](#Time)
+- [Thanks](#Thanks)
 
 # Data Context ➗
+<a id="Data"></a>
 
 The data comes from a [Kaggles exercise](https://www.kaggle.com/c/1056lab-credit-card-customer-churn-prediction). It's an exercvise about using ML to classify credit card customers in terms of if they will close or not their accounts (churning).
 
 # Installation 💻
+<a id="Installation"></a>
 
 For Terraform installation please refer to this [link](https://developer.hashicorp.com/terraform/install).
 
 For Docker installation please refer to this [link](https://docs.docker.com/engine/install/).
 
 # Usage 🛠
+<a id="Usage"></a>
 Clone this repository with:
 
     git clone git@github.com:andreaharit/mlflow.git
@@ -91,6 +94,7 @@ If you wish to wipe out all generated files, please use:
     	
 
 # File structure 🗃️
+<a id="FileStructure"></a>
 
     ├─── imgs
     ├─── mlflow_server
@@ -113,9 +117,11 @@ If you wish to wipe out all generated files, please use:
 - runs_model is a folder with all the code for the model (`models_utils.py`). Configurations as how many searches for hyperparameter will be done, experiment name (`configs.py`). The parameters for that will build the hyperparameter grid (`parameters.py`). And the code for running mlflow and the functions regarding the model (`mlflow_utils.py` and `main.py`). 
 
 # Timeline 📅
+<a id="Time"></a>
 The learning process and coding for this project took 6 days.
 
 # Thanks 🫡
+<a id="Thanks"></a>
 Thanks to Viktor the provider for the code for the models, check out his [github](https://github.com/CoViktor)!
 
 And also Jens who helped me out with Terraform, also check out his [github](https://github.com/DedeyJ)!
