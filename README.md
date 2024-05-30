@@ -91,6 +91,27 @@ If you wish to wipe out all generated files, please use:
     	
 
 # File structure 🗃️
+
+    ├─── imgs
+    ├─── mlflow_server
+    │   ├───Dockerfile
+    │   └───requirements.txt
+    ├───runs_model
+    │   ├───data
+    │   │		└───BankChurners.csv
+    │   ├───src
+    │   │		├───configs.py
+    │   │		├───main.py
+    │   │		├───mlflow_utils.py
+    │   │		├───models_utils.py
+    │   │		└───parameters.py
+    │   ├───Dockerfile
+    │   └───requirements.txt
+    ├───README.md
+    └───main.tf
+- mlflow_server contais the Dockerfile to run the mlflow_server
+- runs_model is a folder with all the code for the model (`models_utils.py`). Configurations as how many searches for hyperparameter will be done, experiment name (`configs.py`). The parameters for that will build the hyperparameter grid (`parameters.py`). And the code for running mlflow and the functions regarding the model (`mlflow_utils.py` and `main.py`). 
+
 # Timeline 📅
 The learning process and coding for this project took 6 days.
 
