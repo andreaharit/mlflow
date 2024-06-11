@@ -1,6 +1,6 @@
 # Description 📝
 
-This project aims to use [MLFlow](https://mlflow.org/) to keep track of ML models and their hyperparameter tunning by log its metrics, parameters and pickle files.
+This project aims to use [MLFlow](https://mlflow.org/) to keep track of ML models and their hyperparameter tunning by logging its metrics, parameters and pickle files.
 
 We keep MLFlow containerized with [Docker](https://www.docker.com/) and use [Terraform](https://www.terraform.io/) to create and connect two containers: 
 - one for the model runs
